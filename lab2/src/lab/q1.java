@@ -6,7 +6,7 @@ public class q1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter the value of n(no of train data): ");
+//        System.out.println("Enter the value of n(no of train data): ");
 //        int n = sc.nextInt();
 //        int action[] = new int[n];
 //        int comedy[] = new int[n];
@@ -28,29 +28,35 @@ public class q1 {
 //            category[i] = sc.nextInt();
 //        }
 
-        System.out.println("Enter the TEST DATA: ");
-        int x = sc.nextInt();
-        int y = sc.nextInt();
+        System.out.println("Enter the number of movies you validate : ");
+        int m = sc.nextInt();
+        while(m>0) {
+        	System.out.println("Enter the number of action scenes : ");
+        	int x = sc.nextInt();
+        	System.out.println("Enter the number of comedy scenes : ");
+            int y = sc.nextInt();
 
-        double c[] = new double[n];
-        for (int j = 0; j < n; j++) {
-            c[j] = (x - action[j]) * (x - action[j]) + (y - comedy[j]) * (y - comedy[j]);
-            c[j] = Math.pow(c[j], 0.5);
-        }
-
-        double min = c[0];
-        int p = 0;
-        for (int i = 0; i < n; i++) {
-            if (min > c[i]) {
-                min = c[i];
-                p = i;
+            double c[] = new double[n];
+            for (int j = 0; j < n; j++) {
+                c[j] = (x - action[j]) * (x - action[j]) + (y - comedy[j]) * (y - comedy[j]);
+                c[j] = Math.pow(c[j], 0.5);
             }
-        }
 
-        if (category[p] == 1) {
-            System.out.println("Category of the test data is Action");
-        } else if (category[p] == 2) {
-            System.out.println("Category of the test data is Comedy");
+            double min = c[0];
+            int p = 0;
+            for (int i = 0; i < n; i++) {
+                if (min > c[i]) {
+                    min = c[i];
+                    p = i;
+                }
+            }
+
+            if (category[p] == 1) {
+                System.out.println("Category is Action");
+            } else if (category[p] == 2) {
+                System.out.println("Category is Comedy");
+            }
+            m--;
         }
 
     }
