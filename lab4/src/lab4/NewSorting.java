@@ -1,54 +1,31 @@
 package lab4;
+import java.util.Arrays; 
 
 public class NewSorting {
-	public static void main(String[] args)
-	{  
-		int arr[] ={860,8,200,9};  
- 
-		System.out.println("---Array BEFORE Bubble Sort---"); 
-		
-	    printArray(arr);
- 
-		bubbleSort(arr);//sorting array elements using bubble sort  
- 
-		System.out.println("---Array AFTER Bubble Sort---");  
-		
-		printArray(arr); 
- 
-	}  
- 	static void bubbleSort(int[] array)
-	{  
-		int n = array.length;  
-		int temp = 0;  
-		for(int i=0; i < n; i++) // Looping through the array length
-		{  System.out.println("Sort Pass Number "+(i+1)); 
-			for(int j=1; j < (n-i); j++)
-			{  
-			    System.out.println("Comparing "+ array[j-1]+ " and " + array[j]);    
-				if(array[j-1] > array[j])
-				{   
-				    
-					//swap elements  
-					temp = array[j-1];  
-					array[j-1] = array[j];  
-					array[j] = temp;  
-				    System.out.println(array[j]  + " is greater than " + array[j-1]);
-				    System.out.println("Swapping Elements: New Array After Swap");
-					printArray(array);
-				}  
- 
-			}  
-		}  
- 
-	} 
+	static void bubbleSort(int arr[], int n) 
+    { 
+
+        if (n == 1) 
+            return; 
+
+        for (int i=0; i<n-1; i++) 
+            if (arr[i] > arr[i+1]) 
+            { 
+                int temp = arr[i]; 
+                arr[i] = arr[i+1]; 
+                arr[i+1] = temp; 
+            } 
+
+        bubbleSort(arr, n-1); 
+    } 
 	
-	static void printArray(int[] array){
-	    
-	    for(int i=0; i < array.length; i++)
-		{  
-			System.out.print(array[i] + " ");  
-		} 
-	    System.out.println();
-	    
-	}
+    public static void main(String[] args) 
+    { 
+        int arr[] = {64, 34, 25, 12, 22, 11, 90}; 
+       
+        bubbleSort(arr, arr.length); 
+          
+        System.out.println("Sorted array : "); 
+        System.out.println(Arrays.toString(arr)); 
+    } 
 }
